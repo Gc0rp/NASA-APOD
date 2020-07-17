@@ -1,0 +1,14 @@
+*{
+    box-sizing: border-box;
+}
+
+.main-heading{
+    font-family: 'Montserrat Subrayada', sans-serif;
+    font-size: 45px;
+    text-align: center;
+}
+
+.nasa-apod{
+    width: 500px;
+    height: 500px;
+}
