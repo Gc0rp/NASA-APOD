@@ -1,6 +1,7 @@
 const dateSelected = document.querySelector('.date-picker');
 const image = document.querySelector('.nasa-apod');
 const explanation = document.querySelector('.explanation');
+const imageCaption = document.querySelector('.author');
 
 function getImage(date) {
 
@@ -14,10 +15,29 @@ function getImage(date) {
             return processingPromise;
         })
         .then(function addImageToDiv(processedJson){
-            image.src = processedJson.url;
-            image.alt = processedJson.title;
 
-            explanation.innerText = processedJson.explanation;
+            if(processedJson.code === 400){
+                image.alt = "Image not found.";
+                imageCaption.innerHTML = "Author not found.";
+                processedJson.explanation = ""; 
+
+            } else {
+
+                if(processedJson.media_type === "video"){
+                   
+                } else if (processedJson.media_type === "image"){
+                    const img = document.createElement("img");
+                    img.alt = processedJson.title;
+                    img.src = processedJson.url;
+                    img.className = "nasa-apod";
+
+                    imageCaption.innerHTML = "Taken by: " + processedJson.copyright;
+
+                    console.log(img);
+                }
+                explanation.innerText = processedJson.explanation;
+            }
+
             console.log(processedJson);
         });
 }
