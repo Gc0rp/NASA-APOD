@@ -1,14 +1,34 @@
-*{
+* {
     box-sizing: border-box;
+    padding: 0;
+    margin: 0;
 }
 
-.main-heading{
+.main-heading {
     font-family: 'Montserrat Subrayada', sans-serif;
     font-size: 45px;
     text-align: center;
+    color: red;
 }
 
-.nasa-apod{
+.nasa-apod {
     width: 500px;
     height: 500px;
+}
+
+form {
+    text-align: center;
+    padding: 20px;
+}
+
+.apod-article {
+    outline: 1px solid blue;
+    text-align: center;
+    padding: 20px;
+}
+
+.explanation {
+    outline: 1px solid red;
+    padding: 20px;
+    text-align: left;
 }

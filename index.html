@@ -8,19 +8,22 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Montserrat+Subrayada:wght@700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./css/style.css" />
 </head>
 <body>
 
         <h1 class="main-heading">NASA APOD</h1>  
-        <label for="date-picker">Select Date: </label>
-        <input type="date" class="date-picker" />
 
-        <article>
+        <form>
+            <label for="date-picker">Select Date: </label>
+            <input type="date" class="date-picker" />
+        </form>
+
+        <article class="apod-article">
             <img class="nasa-apod" />
-            <p class="section"></p>
+            <p class="explanation"></p>
         </article>
 
-    <script src="scripts.js"></script>
+    <script src="./js/scripts.js"></script>
 </body>
 </html>
