@@ -11,11 +11,6 @@
     color: red;
 }
 
-.nasa-apod {
-    width: 500px;
-    height: 500px;
-}
-
 form {
     text-align: center;
     padding: 20px;
@@ -26,8 +21,12 @@ form {
     padding: 20px;
 }
 
+.apod-article .apod-image {
+    width: 500px;
+    height: 500px;
+}
 
-.author{
+.apod-article .author{
     padding: 0px 0px 40px 0px;
     text-align: right;
     margin: 0px auto;
@@ -36,7 +35,7 @@ form {
     font-style: italic;
 }
 
-.explanation {
+.apod-article .explanation {
     padding: 20px;
     text-align: left;
     margin-left: auto;

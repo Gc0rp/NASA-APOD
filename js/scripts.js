@@ -1,11 +1,13 @@
 const dateSelected = document.querySelector('.date-picker');
 const image = document.querySelector('.nasa-apod');
+const media = document.querySelector('.media');
 const explanation = document.querySelector('.explanation');
-const imageCaption = document.querySelector('.author');
+const authorOfSource = document.querySelector('.author');
 
 function getImage(date) {
 
-    const NASA_APOD_URL = "https://api.nasa.gov/planetary/apod?api_key=EBWHXc4NLOWbVtNGlvak9dLgEaw0B6y3fWbibRmP&hd=true&date=" + date;
+    // Replace XXXX with APIkey
+    const NASA_APOD_URL = "https://api.nasa.gov/planetary/apod?api_key=XXXXXX&hd=true&date=" + date;
 
     const promise = fetch(NASA_APOD_URL);
 
@@ -24,27 +26,28 @@ function getImage(date) {
             } else {
 
                 if(processedJson.media_type === "video"){
-                   
+
+                    media.innerHTML = '<iframe width="500" height="315" ' + 
+                    'src="' + processedJson.url + '"' +  'frameborder="0" allow="autoplay; encrypted-media"' +
+                    'allowfullscreen></iframe>';
+
+                    (processedJson.copyright === undefined) ? authorOfSource.innerHTML = "" : authorOfSource.innerHTML = "Copyright: " + processedJson.copyright;
+
                 } else if (processedJson.media_type === "image"){
                     const img = document.createElement("img");
                     img.alt = processedJson.title;
                     img.src = processedJson.url;
-                    img.className = "nasa-apod";
+                    img.className = "apod-image";
+                    authorOfSource.innerHTML = "Taken by: " + processedJson.copyright;
 
-                    imageCaption.innerHTML = "Taken by: " + processedJson.copyright;
-
-                    console.log(img);
+                    media.innerHTML = '<img src="' + processedJson.url + '"' + 'alt = ' + processedJson.title + ' class="apod-image" />' ;
                 }
                 explanation.innerText = processedJson.explanation;
             }
-
-            console.log(processedJson);
         });
 }
 
 
 document.addEventListener('change', function dateChanged() {
-    console.log(dateSelected.value);
-
     getImage(dateSelected.value);
 });
